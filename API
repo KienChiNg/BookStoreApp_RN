@@ -1,0 +1,953 @@
+1.CHUNG (Cho admin,customer)
+    1.1. login
+    1.2. logout
+    1.3. profile
+2. customer(xem sach, dat sach, binh luan danh gia sach)
+    - register
+    2.1. cart (gio hang)
+        - them sach vao gia hang (/cart/add_book)
+        - xoa sach khoi gio hang (/cart/remove_book)
+        - lay thong tin gio hang (/cart/get_cart)
+    2.2. booking (cac chuc nang lien quan den dat don hang)
+        - .....
+3. admin(thien ve cac chuc nang lien quan den viec quan ly)
+    3.1. stats (thong ke theo ngay hien tai)- dashboard
+    3.2. book (cac chuc nang lien quan den quan ly sach)
+    3.3. voucher(cac chuc nang lien quan den voucher)
+    3.4. cac chuc nang lien quan den don hang
+
+GIAO DIEN
+1. LOGIN
+2. DANG KI TAI KHOAN
+SAU KHI DANG NHAP
+3. DASHBOARD 
+    3.1. CUSTOMER
+        - can su dong gop y kien 
+    3.2. ADMIN
+        - thong ke 
+        - .......
+4. PROFILE
+GIAO DIEN CHO ADMIN
+5. QUAN LY
+    4.1. SACH 
+    4.2. DON HANG
+    4.3. VOUCHER
+GIAO DIEN CHO CUSTOMER
+6. SHOP(hien thi sach, ....)
+7.DON HANG(Hien thi don hang da dat)
+8. CART
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////        1. CHUNG                  ////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+============================================   1.1. LOGIN===================================================
+							/member/login
+	----------request------
+{
+    "username":"kiennca",
+    "password": "123456789"
+}
+	----------response-----
+{
+    "code": 200,
+    "description": "thanh cong",
+    "session": "f862415f-db4d-466b-b4d1-52eca6b95278"
+}
+các trường hợp khác chỉ trả về code,description
+=============================================   1.2. LOGOUT===================================================
+							/member/logout
+	----------request------
+{
+    "session": "f862415f-db4d-466b-b4d1-52eca6b95278"
+}
+	----------response-----
+{
+    "code": 200,
+    "description": "thanh cong"
+}
+các trường hợp khác chỉ trả về code,description
+============================================    1.3. PROFILE===============================
+        ****************** /member/profile ****************
+        ----------request------
+        {
+            "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16"
+        }
+        ----------response-----
+        {
+            "result": {
+                "member": {
+                    "mem_username": "kiennca",
+                    "mem_avatar": "base64"
+                    "mem_id": 1,
+                    "mem_group": "admin",
+                    "mem_email": "kiennc@gmail.com",
+                    "mem_fullname": "Nguyen Chi Kien"
+                }
+            },
+            "code": 200,
+            "description": "Thành công"
+        }
+        *****************  /member/update_profile ***************
+        --------------request ------------------
+        {
+            "session": "2a490cd7-0bb3-4c10-927f-538050a81f76",
+            "member": {
+                "mem_username": "dattp.admin",
+                "mem_avatar": "base64",
+                "mem_id": 1,
+                "mem_group": "admin",
+                "mem_email": "dattp@gmail.com",
+                "mem_fullname": "Trương Phúc Đạt"
+            }
+        }
+        --------------response ------------------
+        {
+            "code": 200,
+            "description": "Thành công"
+        }
+============================================    1.4. BOOK   ======================================
+                *********/book/get_books**************
+        -----------request---------------
+        {
+            "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+            "title": "",//tieu de sach can tim - khong bat buoc
+            "limit": -1,//so luong sach toi da tra ve - khong bat buoc
+	    "type_book":{
+		"type_id": 1
+	    }//khong bat buoc- lay du lieu tu /book/get_all_type
+        }
+        -----------response---------------
+        {
+            "result": {
+                "total": 13,
+                "list": [
+                    {
+                        "book_price": 199000,
+                        "book_typeo": {
+                            "type_name": "Kỳ ảo",
+                            "type_note": "created by dattp",
+                            "type_id": 11
+                        },
+                        "book_release_date": "2022-12-01",
+                        "book_title": "Harry Potter",
+                        "book_image": "base64",
+                        "book_number": 99,
+                        "book_author": "J. K. Rowling",
+                        "book_create_date": "2022-12-24 17:43:23",
+                        "book_id": 28,
+                        "book_description": "dattp",
+                        "book_page_number": -1,
+                        "book_is_new": false
+                    },
+                    {
+                        "book_price": 99000,
+                        "book_typeo": {
+                            "type_name": "Anime",
+                            "type_id": 6
+                        },
+                        "book_release_date": "1995-06-19",
+                        "book_title": "Naruto",
+                        "book_image": "base64",
+                        "book_number": 99,
+                        "book_author": "Kishimoto Masashi",
+                        "book_create_date": "2022-12-19 11:41:56",
+                        "book_id": 21,
+                        "book_page_number": -1,
+                        "book_is_new": false
+                    },
+                    {
+                        "book_type": "",
+                        "book_typeo": {
+                            "type_name": "Trinh thám",
+                            "type_id": 1
+                        },
+                        "book_number": 97,
+                        "book_author": "Conan Doyle",
+                        "book_id": 20,
+                        "book_description": "",
+                        "book_is_new": false,
+                        "book_price": 100000,
+                        "book_release_date": "1867-01-17",
+                        "book_title": "Sherlock Holmes",
+                        "book_image": "base64",
+                        "book_number": 98,
+                        "book_author": "Nhật Hạ",
+                        "book_create_date": "2022-11-29 12:00:00",
+                        "book_id": 5,
+                        "book_description": "",
+                        "book_page_number": 100,
+                        "book_is_new": false
+                    },
+                    {
+                        "book_type": "Type 5",
+                        "book_price": 100000,
+                        "book_release_date": "2022-12-04",
+                        "book_title": "Nghìn lẻ một đêm",
+                        "book_image": "base64",
+                        "book_create_date": "2022-11-29 12:00:00",
+                        "book_page_number": -1
+                    },
+                    {
+                        "book_type": "",
+                        "book_typeo": {
+                            "type_name": "Văn học",
+                            "type_id": 5
+                        },
+                        "book_number": 97,
+                        "book_author": "Nguyễn Du",
+                        "book_id": 13,
+                        "book_description": "",
+                        "book_is_new": false,
+                        "book_price": 100000,
+                        "book_release_date": "1820-01-01",
+                        "book_title": "Truyện Kiều",
+                        "book_image": "base64",
+                        "book_create_date": "2022-11-29 12:00:00",
+                        "book_page_number": -1
+                    },
+                    {
+                        "book_type": "",
+                        "book_typeo": {
+                            "type_name": "Kinh dị",
+                            "type_id": 3
+                        },
+                        "book_number": 94,
+                        "book_author": "Trương Phúc Đạt",
+                        "book_id": 15,
+                        "book_description": "",
+                        "book_is_new": false,
+                        "book_price": 100000,
+                        "book_release_date": "2022-12-04",
+                        "book_title": "Ác mộng kinh hoàng",
+                        "book_image": "base64",
+                        "book_create_date": "2022-11-29 12:00:00",
+                        "book_page_number": 200
+                    }
+                ]
+            },
+            "code": 200,
+            "description": "Thành công"
+        }
+        *************  /book/get_book_by_id  **********
+        sử dụng khi click vào 1 cuốn sách để xem chi tiết
+        ---------request-----------
+        {
+            "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+            "book_id": "28"
+        }
+        ---------response----------
+        {
+            "result": {
+                "book": {
+                    "book_price": 199000,
+                    "book_typeo": {
+                        "type_name": "Kỳ ảo",
+                        "type_note": "created by dattp",
+                        "type_id": 11
+                    },
+                    "book_release_date": "2022-12-01",
+                    "book_title": "Harry Potter",
+                    "book_image": "base64",
+                    "book_number": 99,
+                    "book_author": "J. K. Rowling",
+                    "book_create_date": "2022-12-24 17:43:23",
+                    "book_id": 28,
+                    "book_description": "dattp",
+                    "book_page_number": -1,
+                    "book_is_new": false
+                }
+            },
+            "code": 200,
+            "description": "Thành công"
+        }
+            *************  /book/get_comments ******************
+        ----------request-------------
+        {
+            "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+            "book": {
+                "book_id": 28
+            }
+        }
+        ----------response-----------
+        {
+            "result": {
+                "total": 2,
+                "book_id": 28,
+                "list": [
+                    {
+                        "member": {
+                            "member_id": 17,
+                            "member_fullname": "Nguyễn Phi Hùng",
+                            "member_email": "hungnp@gmail.com",
+                            "member_username": "hungnp"
+                        },
+                        "comment_star": 5,
+                        "comment_content": "Hay",
+                        "comment_date": "2022-12-24 17:44:41"
+                    },
+                    {
+                        "member": {
+                            "member_id": 17,
+                            "member_fullname": "Nguyễn Phi Hùng",
+                            "member_email": "hungnp@gmail.com",
+                            "member_username": "hungnp"
+                        },
+                        "comment_star": 5,
+                        "comment_content": "aaaa",
+                        "comment_date": "2022-12-29 14:00:52"
+                    }
+                ]
+            },
+            "code": 200,
+            "description": "Thành công"
+        }
+            ************   /book/add_comment      *******************
+        -----------request-------------
+        {
+            "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+            "book": {
+                "book_id": 28
+            },
+            "star": 5,
+            "content": ""
+        }
+        -------------------response----------
+        {
+            "code": 200,
+            "description": "Thành công"
+        }
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////       2. CUSTOMER            /////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+            *********** /member/register *************
+	----------request------
+        {
+            "fullname": "Ngeuyễn Chí Kiên",
+            "email": "kiennc@gmail.com",
+            "username": "kiennca",
+            "password": "123456789"
+        }
+	----------response-----
+    {
+        "code": 200,
+        "description": "thanh cong"
+    }
+    các trường hợp khác chỉ trả về code,description
+    ============================= 2.1. CART =======================
+        ******************* /cart/add_book ************
+            ----------request-----------
+            {
+                "session": "9f97e381-1e87-4315-89be-3492fa7423b8",
+                "book": {
+                    "book_id": 28,
+                    "book_number": 2
+                }
+            }
+            ----------response---------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        ******************* /cart/remove_book ************
+            ----------request-----------
+            {
+                "session": "9f97e381-1e87-4315-89be-3492fa7423b8",
+                "book": {
+                    "book_id": 28
+                }
+            }
+            ----------response---------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        ******************* /cart/get_cart **************
+            -----------request--------
+            {
+                "session": "9f97e381-1e87-4315-89be-3492fa7423b8"
+            }
+            -----------response---------------
+            {
+                "result": {
+                    "cart": {
+                        "books": [
+                            {
+                                "book_price": 100000,
+                                "book_release_date": "1969-12-23",
+                                "book_title": "Doraemon",
+                                "book_number": 1,
+                                "book_image": "base64",
+                                "book_author": "Fujiko Fujio",
+                                "book_id": 2,
+                                "book_page_number": -1
+                            }
+                        ]
+                    }
+                },
+                "code": 200,
+                "description": "Thành công"
+            }
+    ========================  2.2. BOOKING ===============================
+        ************* /boooking/get_voucher_booking_active *********
+            các voucher giảm giá có thể sử dụng
+            -------------request----------------
+            {
+                "session": "9f97e381-1e87-4315-89be-3492fa7423b8"
+            }
+            -------------response---------------
+            {
+                "result": {
+                    "total": 1,
+                    "list": [
+                        {
+                            "voucher_booking_created_date": "2022-12-24 15:43:07",
+                            "voucher_booking_id": 2,
+                            "voucher_booking_active": 1,
+                            "voucher_booking_name": "Giảm 10% các đơn",
+                            "voucher_booking_type": "%",
+                            "voucher_booking_value": 10,
+                            "voucher_booking_note": "chỉ sử dụng trong dịp tết"
+                        }
+                    ]
+                },
+                "code": 200,
+                "description": "Thành công"
+            }
+        ************* /boooking/add_booking ************
+            ---------request------------------
+            {
+                "session": "9f97e381-1e87-4315-89be-3492fa7423b8",
+                "cart": {
+                    "books": [
+                        {
+                            "book_price": 100000,
+                            "book_number": 1,
+                            "book_id": 2,
+                            "book_note": ""
+                        }
+                    ]
+                },
+                "voucher_booking": [
+                    {
+                        "voucher_booking_id": 2,
+                    }
+                ]
+            }
+            ---------response-----------------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        ******************* /boooking/get_booking ************
+            ----------request----------------
+            {
+                "session": "9f97e381-1e87-4315-89be-3492fa7423b8"
+            }
+            ----------response---------------
+            {
+                "result": {
+                    "total": 5,
+                    "list": [
+                        {
+                            "booking_id": 1,
+                            "voucher_booking": [],
+                            "bookeds": [
+                                {
+                                    "book": {
+                                        "book_type": "Type 1",
+                                        "book_release_date": "2022-11-01",
+                                        "book_title": "conan",
+                                        "book_image": "base64",
+                                        "book_author": "Aoyama Gōshō",
+                                        "book_id": 1,
+                                        "book_description": "",
+                                        "book_page_number": 121
+                                    },
+                                    "booked_number": 2,
+                                    "booked_price": 100000,
+                                    "booked_note": "test"
+                                }
+                            ],
+                            "booking_date": "2022-12-19 12:00:26",
+                            "booking_total_price": 200000,
+                            "booking_note": "test",
+                            "booking_success": 1
+                        },
+                        {
+                            "booking_id": 2,
+                            "voucher_booking": [],
+                            "bookeds": [
+                                {
+                                    "book": {
+                                        "book_type": "Type 1",
+                                        "book_release_date": "2022-11-01",
+                                        "book_title": "conan",
+                                        "book_image": "base64",
+                                        "book_author": "Aoyama Gōshō",
+                                        "book_id": 1,
+                                        "book_description": "",
+                                        "book_page_number": 121
+                                    },
+                                    "booked_number": 7,
+                                    "booked_price": 100000,
+                                    "booked_note": "test"
+                                }
+                            ],
+                            "booking_date": "2022-12-19 13:38:58",
+                            "booking_total_price": 700000,
+                            "booking_note": "test",
+                            "booking_success": 0
+                        },
+                        {
+                            "booking_id": 12,
+                            "voucher_booking": [],
+                            "bookeds": [
+                                {
+                                    "book": {
+                                        "book_type": "Type 1",
+                                        "book_release_date": "2022-11-01",
+                                        "book_title": "conan",
+                                        "book_image": "base64",
+                                        "book_author": "Aoyama Gōshō",
+                                        "book_id": 1,
+                                        "book_description": "",
+                                        "book_page_number": 121
+                                    },
+                                    "booked_number": 3,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                },
+                                {
+                                    "book": {
+                                        "book_type": "",
+                                        "book_release_date": "2022-12-04",
+                                        "book_title": "Ác mộng kinh hoàng",
+                                        "book_image": "base64",
+                                        "book_author": "Trương Phúc Đạt",
+                                        "book_id": 15,
+                                        "book_description": "",
+                                        "book_page_number": 200
+                                    },
+                                    "booked_number": 1,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                },
+                                {
+                                    "book": {
+                                        "book_type": "Type 4",
+                                        "book_release_date": "2022-12-04",
+                                        "book_title": "Đắc nhân tâm",
+                                        "book_image": "base64",
+                                        "book_author": "Dale Carnegie",
+                                        "book_id": 7,
+                                        "book_description": "rest",
+                                        "book_page_number": 123
+                                    },
+                                    "booked_number": 2,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                },
+                                {
+                                    "booked_number": 1,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                }
+                            ],
+                            "booking_date": "2022-12-24 11:03:38",
+                            "booking_total_price": 700000,
+                            "booking_note": "",
+                            "booking_success": 1
+                        },
+                        {
+                            "booking_id": 15,
+                            "voucher_booking": [
+                                {
+                                    "voucher_booking_id": 2,
+                                    "voucher_booking_active": 1,
+                                    "voucher_booking_name": "Giảm 10% các đơn",
+                                    "voucher_booking_type": "%",
+                                    "voucher_booking_value": 10,
+                                    "voucher_booking_note": "chỉ sử dụng trong dịp tết"
+                                }
+                            ],
+                            "bookeds": [
+                                {
+                                    "book": {
+                                        "book_type": "Type 1",
+                                        "book_release_date": "2022-11-19",
+                                        "book_title": "Góa phụ đen",
+                                        "book_image": "base64",
+                                        "book_author": "Nhật Hạ",
+                                        "book_id": 5,
+                                        "book_description": "",
+                                        "book_page_number": 100
+                                    },
+                                    "booked_number": 1,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                }
+                            ],
+                            "booking_date": "2022-12-24 16:31:22",
+                            "booking_total_price": 90000,
+                            "booking_note": "",
+                            "booking_success": 1
+                        },
+                        {
+                            "booking_id": 29,
+                            "voucher_booking": [
+                                {
+                                    "voucher_booking_id": 2,
+                                    "voucher_booking_active": 1,
+                                    "voucher_booking_name": "Giảm 10% các đơn",
+                                    "voucher_booking_type": "%",
+                                    "voucher_booking_value": 10,
+                                    "voucher_booking_note": "chỉ sử dụng trong dịp tết"
+                                }
+                            ],
+                            "bookeds": [
+                                {
+                                    "book": {
+                                        "book_release_date": "1969-12-23",
+                                        "book_title": "Doraemon",
+                                        "book_image": "base64",
+                                        "book_author": "Fujiko Fujio",
+                                        "book_id": 2,
+                                        "book_page_number": -1
+                                    },
+                                    "booked_number": 1,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                }
+                            ],
+                            "booking_date": "2023-02-19 14:15:28",
+                            "booking_total_price": 90000,
+                            "booking_note": "",
+                            "booking_success": -1
+                        }
+                    ],
+                    "status": [
+                        {
+                            "mode": -1,
+                            "name": "Đang xử lý"
+                        },
+                        {
+                            "mode": 0,
+                            "name": "Đã hủy"
+                        },
+                        {
+                            "mode": 1,
+                            "name": "Thành công"
+                        }
+                    ]
+                },
+                "code": 200,
+                "description": "Thành công"
+            }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////  3. ADMIN     ////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+===================================   3.1. STATS   ==========================
+            ************* /boooking/stats_booking_current_day ***************
+                ------request---------
+                    {
+                        "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16"
+                    }
+                ------response--------
+                    {
+                        "result": {
+                            "success_booking": 0,
+                            "revenue": 0,
+                            "waiting_booking": 0,
+                            "cancel_booking": 0,
+                            "total_booking": 0
+                        },
+                        "code": 200,
+                        "description": "Thành công"
+                    }
+    ================================= 3.2. BOOKS  ==================================
+        ************  /book/update_books **************
+            -----------request-------------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+                "book": {
+                    "book_price": 199000,
+                    "book_typeo": {
+                        "type_name": "Kỳ ảo",
+                        "type_note": "created by dattp",
+                        "type_id": 11
+                    },
+                    "book_release_date": "2022-12-01",
+                    "book_title": "Harry Potter",
+                    "book_image": "base64",
+                    "book_number": 99,
+                    "book_author": "J. K. Rowling",
+                    "book_id": 28,
+                    "book_description": "dattp",
+                    "book_page_number": null
+                    ]
+                }
+            }
+            ------------response----------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        ***************  /book/add_books  **************************
+            -------------request-------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+                "book": {
+                    "book_typeo": {
+                        "type_name": "Trinh thám",
+                        "type_id": 1
+                    },
+                    "book_title": "test",
+                    "book_author": "dattp",
+                    "book_price": 100,
+                    "book_number": 100,
+                    "book_description": "test",
+                    "book_release_date": "2023-02-19",
+                    "book_page_number": 1000,
+                    "book_image": "base64"
+                }
+            }
+            -------------response------------------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        ************  /book/delete_books *********************
+            -------------request------------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+                "book": {
+                    "book_id": 32
+                }
+            }
+            -------------response----------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        *************  /book/get_all_type *******************
+            sử dụng khi quản lý muốn xem tất cả các thể loại sách hiện có
+            ------------request--------------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16"
+            }
+            ------------response-------------
+            {
+                "result": {
+                    "total": 7,
+                    "list": [
+                        {
+                            "type_name": "Trinh thám",
+                            "type_id": 1
+                        },
+                        {
+                            "type_name": "Thiếu nhi",
+                            "type_id": 2
+                        },
+                        {
+                            "type_name": "Kinh dị",
+                            "type_id": 3
+                        },
+                        {
+                            "type_name": "Cổ tích",
+                            "type_id": 4
+                        },
+                        {
+                            "type_name": "Văn học",
+                            "type_id": 5
+                        },
+                        {
+                            "type_name": "Anime",
+                            "type_id": 6
+                        },
+                        {
+                            "type_name": "Kỳ ảo",
+                            "type_note": "created by dattp",
+                            "type_id": 11
+                        }
+                    ]
+                },
+                "code": 200,
+                "description": "Thành công"
+            }
+    ==================================   3.3. VOUCHER =========================
+        **********************  /boooking/add_voucher_booking  *****************
+            ---------request---------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+                "voucher_booking": {
+                    "voucher_booking_type": "%",
+                    "voucher_booking_name": "giam 50%",
+                    "voucher_booking_value": 50,
+                    "voucher_booking_note": "test"
+                }
+            }
+            voucher_booking_type: có 2 loại %,n (%-giảm theo phần trăn, n-giảm theo số tiền cố định)
+            voucher_booking_value: VD: voucher_booking_type=%,voucher_booking_value=50 => giảm 50% cho cả dơn hàng
+                                   voucher_booking_type=n,voucher_booking_value=50000 => giảm 50000 đ cho cả dơn hàng
+            ----------response---------
+        **********************  /boooking/get_all_voucher_booking **************
+            --------request----------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16"
+            }
+            --------response---------
+            {
+                "result": {
+                    "total": 2,
+                    "list": [
+                        {
+                            "voucher_booking_created_date": "2022-12-24 15:43:07",
+                            "voucher_booking_id": 2,
+                            "voucher_booking_active": 1,
+                            "voucher_booking_name": "Giảm 10% các đơn",
+                            "voucher_booking_type": "%",
+                            "voucher_booking_value": 10,
+                            "voucher_booking_note": "chỉ sử dụng trong dịp tết"
+                        },
+                        {
+                            "voucher_booking_created_date": "2022-12-24 15:43:57",
+                            "voucher_booking_id": 3,
+                            "voucher_booking_active": 0,
+                            "voucher_booking_name": "giảm 20K",
+                            "voucher_booking_type": "n",
+                            "voucher_booking_value": 20000
+                        }
+                    ]
+                },
+                "code": 200,
+                "description": "Thành công"
+            }
+        *******************  /boooking/open_voucher_booking *****************
+            voucher được tạo nhưng chưa được open thì khách hàng không thể sử dụng được
+            ------------- request --------------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+                "voucher_booking": {
+                    "voucher_booking_id": 4
+                }
+            }
+            ------------ response -----------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        *******************  /boooking/close_voucher_booking *****************
+            ------------- request --------------
+            {
+                "session": "f7faf999-6b6b-4bf8-9bd9-5f122f047f16",
+                "voucher_booking": {
+                    "voucher_booking_id": 4
+                }
+            }
+            ------------ response -----------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+    ======================= 3.4. BOOKING ===============
+        *************** /boooking/get_all_booking_by_date ***************
+            --------------request---------------------
+            {
+                "session": "c38c0903-efd5-4b51-907f-ff653d105e51",
+                "date": "2023-02-19 00:00:00"//ngay bat dau lay
+            }
+            --------------response--------------------
+            {
+                "result": {
+                    "total": 1,
+                    "list": [
+                        {
+                            "booking_id": 29,
+                            "voucher_booking": [
+                                {
+                                    "voucher_booking_id": 2,
+                                    "voucher_booking_active": 1,
+                                    "voucher_booking_name": "Giảm 10% các đơn",
+                                    "voucher_booking_type": "%",
+                                    "voucher_booking_value": 10,
+                                    "voucher_booking_note": "chỉ sử dụng trong dịp tết"
+                                }
+                            ],
+                            "bookeds": [
+                                {
+                                    "book": {
+                                        "book_release_date": "1969-12-23",
+                                        "book_title": "Doraemon",
+                                        "book_image": "base64",
+                                        "book_author": "Fujiko Fujio",
+                                        "book_id": 2,
+                                        "book_page_number": -1
+                                    },
+                                    "booked_number": 1,
+                                    "booked_price": 100000,
+                                    "booked_note": ""
+                                }
+                            ],
+                            "booking_date": "2023-02-19 14:15:28",
+                            "member": {
+                                "member_id": 5,
+                                "member_fullname": "Ngô Thế Dũng",
+                                "member_email": "dungnt@gmail.com",
+                                "member_username": "dungnt"
+                            },
+                            "booking_total_price": 90000,
+                            "booking_note": "",
+                            "booking_success": -1
+                        }
+                    ],
+                    "status": [
+                        {
+                            "mode": -1,
+                            "name": "Đang xử lý"
+                        },
+                        {
+                            "mode": 0,
+                            "name": "Đã hủy"
+                        },
+                        {
+                            "mode": 1,
+                            "name": "Thành công"
+                        }
+                    ]
+                },
+                "code": 200,
+                "description": "Thành công"
+            }
+        ******************* /boooking/confirm_booking **********
+            ----------request-----------
+            {
+                "session": "c38c0903-efd5-4b51-907f-ff653d105e51",
+                "booking": {
+                    "booking_id": 29
+                }
+            }
+            -----------response---------------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
+        ******************* /boooking/cancel_booking **********
+            ----------request-----------
+            {
+                "session": "c38c0903-efd5-4b51-907f-ff653d105e51",
+                "booking": {
+                    "booking_id": 29
+                }
+            }
+            -----------response---------------
+            {
+                "code": 200,
+                "description": "Thành công"
+            }
