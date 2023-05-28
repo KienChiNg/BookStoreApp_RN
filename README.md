@@ -54,6 +54,7 @@ CartScreen
 ConFirm
 
 ![image](https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/ab37ad65-a043-44a4-82e3-126913bc2688) 
+
 ![image](https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/667600e2-1139-4486-9b38-7014a5174b28)
 
 PersonalScreen
