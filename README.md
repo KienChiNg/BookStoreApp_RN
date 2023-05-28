@@ -15,6 +15,10 @@ Process
 
 https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/835116f8-8bde-4b50-ad4a-fa1d1d844950
 
+History 
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/f9cb71af-c4a5-4eba-940d-ad6e5011c839
+
 Comment
 
 https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/904cd0c7-b55f-4eaf-b199-f34dc4b6a104
