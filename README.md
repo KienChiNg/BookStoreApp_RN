@@ -15,6 +15,10 @@ Process
 
 https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/835116f8-8bde-4b50-ad4a-fa1d1d844950
 
+EditProfile
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/9ba07f85-cc6a-4878-856f-e283b6008f71
+
 History 
 
 https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/f9cb71af-c4a5-4eba-940d-ad6e5011c839
@@ -28,11 +32,6 @@ ErrorAnouncement
 https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/05d1e63f-4a08-4e04-b39a-82d98a08aff1
 
 https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/a268dc04-da8f-492c-bdaa-e317b9425602
-
-EditProfile
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/9ba07f85-cc6a-4878-856f-e283b6008f71
-
 
 
 LoginScreen
