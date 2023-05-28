@@ -1,4 +1,4 @@
 export default {
-    API: "http://192.168.135.186/librarymanagerapi",
+    API: "http://?.?.?.?/librarymanagerapi", // your IP address
     sessionID: '',
 }
