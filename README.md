@@ -1,5 +1,5 @@
 # BookStoreApp_RN
- Mini Project
+ Mini Project React Native
  
  Main functions: 
  -  MainBoard
