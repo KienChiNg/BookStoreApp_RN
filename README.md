@@ -1,4 +1,4 @@
-# ReactNative_BookStore_App ![book-stack (1)](https://github.com/KienChiNg/ReactNative_BookStore_App/assets/106145545/cfbe93ed-b081-4675-835b-bcb703c3824e)
+# ReactNative_BookStore_App ![book-stack (1)](https://github.com/KienChiNg/ReactNative_BookStore_App/assets/106145545/7902b814-5040-4be7-9313-d245038c65dd)
 
  Mini Project React Native
  
