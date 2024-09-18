@@ -8,33 +8,6 @@
  -  Purchase
  -  View statistics
 
-Loading
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/743456f2-b824-4283-887b-535357bfff6d
-
-Process
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/835116f8-8bde-4b50-ad4a-fa1d1d844950
-
-EditProfile
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/9ba07f85-cc6a-4878-856f-e283b6008f71
-
-History 
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/f9cb71af-c4a5-4eba-940d-ad6e5011c839
-
-Comment
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/904cd0c7-b55f-4eaf-b199-f34dc4b6a104
-
-ErrorAnouncement
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/05d1e63f-4a08-4e04-b39a-82d98a08aff1
-
-https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/a268dc04-da8f-492c-bdaa-e317b9425602
-
-
 LoginScreen
 
 ![image](https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/ada7d877-8137-486c-82c8-5e0124780492)
@@ -78,6 +51,35 @@ History
 ![image](https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/79d7a664-38fa-4c4c-84d0-be316ea42d0b)
 
 ![image](https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/ed45ec3f-1619-4dd7-8f7b-6068cf6eca61)
+
+Loading
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/743456f2-b824-4283-887b-535357bfff6d
+
+Process
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/835116f8-8bde-4b50-ad4a-fa1d1d844950
+
+EditProfile
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/9ba07f85-cc6a-4878-856f-e283b6008f71
+
+History 
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/f9cb71af-c4a5-4eba-940d-ad6e5011c839
+
+Comment
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/904cd0c7-b55f-4eaf-b199-f34dc4b6a104
+
+ErrorAnouncement
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/05d1e63f-4a08-4e04-b39a-82d98a08aff1
+
+https://github.com/KienChiNg/BookStoreApp_RN/assets/106145545/a268dc04-da8f-492c-bdaa-e317b9425602
+
+
+
 
 
 
